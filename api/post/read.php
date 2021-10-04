@@ -3,8 +3,8 @@
     // header('Access-Control-Allow-Origin: *');
     // header('Content-Type: application/json');
 
-    require_once __DIR__.'\..\..\config\Database.php';
-    require_once __DIR__.'\..\..\models\Item.php';
+    require_once __DIR__.'/../../config/Database.php';
+    require_once __DIR__.'/../../models/Item.php';
 
 
     //Instantiate DB & connect

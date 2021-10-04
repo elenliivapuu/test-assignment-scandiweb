@@ -3,11 +3,11 @@
     // header('Access-Control-Allow-Origin: *');
     // header('Content-Type: application/json');
 
-    require_once __DIR__.'\..\..\config\Database.php';
-    require_once __DIR__.'\..\..\models\Item.php';
-    require_once __DIR__.'\..\..\models\DVD.php';
-    require_once __DIR__.'\..\..\models\Book.php';
-    require_once __DIR__.'\..\..\models\Furniture.php';
+    require_once __DIR__.'/../../config/Database.php';
+    require_once __DIR__.'/../../models/Item.php';
+    require_once __DIR__.'/../../models/DVD.php';
+    require_once __DIR__.'/../../models/Book.php';
+    require_once __DIR__.'/../../models/Furniture.php';
 
     //Instantiate DB & connect
     $database_ = new Database();
