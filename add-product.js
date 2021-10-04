@@ -45,7 +45,7 @@ $('#save-product-btn').click(function() {
 
     $.ajax({
         type: "POST",
-        url: "api/post/create.php",
+        url: "https://test-assignment-scandiweb.herokuapp.com/api/post/create.php",
         data: { 'new': new_item, 'type': type }
     }).done(function( msg ) {
         window.location.href = '/';

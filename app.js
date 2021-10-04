@@ -2,7 +2,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "api/post/read.php",
+        url: "https://test-assignment-scandiweb.herokuapp.com/api/post/read.php",
     }).done(function( res ) {
         const results_obj = JSON.parse(res)['data'];
         // create blocks for items
@@ -32,7 +32,7 @@ $('#delete-product-btn').click(function() {
     }
     $.ajax({
         type: "POST",
-        url: "api/post/delete.php",
+        url: "https://test-assignment-scandiweb.herokuapp.com/api/post/delete.php",
         data: { ids: item_ids }
     }).done(function( msg ) {
         location.reload();
