@@ -3,8 +3,8 @@
     // header('Access-Control-Allow-Origin: *');
     // header('Content-Type: application/json');
 
-    include(__DIR__.'/config/Database.php');
-    include(__DIR__.'/models/Item.php');
+    include(__DIR__.'../config/Database.php');
+    include(__DIR__.'../models/Item.php');
 
 
     //Instantiate DB & connect
