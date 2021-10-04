@@ -48,6 +48,6 @@ $('#save-product-btn').click(function() {
         url: "api/post/create.php",
         data: { 'new': new_item, 'type': type }
     }).done(function( msg ) {
-        window.location.href = '/sandbox/testwebsite/';
+        window.location.href = '/';
     });
 });
