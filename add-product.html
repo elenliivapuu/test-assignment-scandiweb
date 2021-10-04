@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Product Add</title>
+</head>
+<body>
+    <header>
+        <div class=container>
+            <div class="box1">
+                <h2>Product Add</h2>    
+            </div>   
+            <div class="box2">
+                <input type="button" value="SAVE" id="save-product-btn">
+                <a href="/sandbox/testwebsite/"><input type="button" value="CANCEL"></a>
+            </div>
+        </div>
+        <hr>
+    </header>
+    <main>
+        <form id="product_form">
+            <label for="SKU">SKU</label>
+            <input type="text" id='sku'>
+            <br>
+            <label for="Name">Name</label>
+            <input type="text" id='name'>
+            <br>
+            <label for="Price">Price($)</label>
+            <input type="value" id='price'>
+            <br>
+            <label for="Type Switcher">Type Switcher</label>
+            <select id="productType">
+                <option value="Product type" selected disabled hidden>Select product type</option>
+                <option value="DVD">DVD</option>
+                <option value="Book">Book</option>
+                <option value="Furniture">Furniture</option>
+
+            </select>
+            <br><br>
+
+            <div class="item_extra" id="DVD" hidden>
+                <p>Please provide DVD size in MB</p><br>
+                <label for="Size">Size (MB)</label>
+                <input type="value" id="Size">
+            </div>
+
+            <div class="item_extra" id="Book" hidden>
+                <p>Please provide book weight in KG</p><br>
+                <label for="Weight">Weight (KG)</label>
+                <input type="value" id="Weight">
+            </div>
+
+            <div class="item_extra" id="Furniture" hidden>
+                <p>Please provide dimensions in HxWxL format</p><br>
+                <label for="Height">Height (CM)</label>
+                <input type="value" id="Height"><br>
+                <label for="Width">Width (CM)</label>
+                <input type="value" id="Width"><br>
+                <label for="Length">Length (CM)</label>
+                <input type="value" id="Length">
+            </div>
+
+        </form>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <hr>
+            <h4>Scandiweb Test assignment</h4>
+        </div>
+    </footer>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="add-product.js"></script>
+</body>
+</html>
