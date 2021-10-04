@@ -9,7 +9,7 @@ $(document).ready(function() {
         for (res of results_obj) {
             const newElem = `
             <div class="grid-item">
-                <input class=".delete-checkbox" type="checkbox" value=${res.id}></input>
+                <input class="delete-checkbox" type="checkbox" value=${res.id}></input>
                 <p class="item-sku">${res.SKU}</p>
                 <h4 class="item-name">${res.Name}</h4>
                 <small class="item-attr">${res.Special_attribute}</small>
