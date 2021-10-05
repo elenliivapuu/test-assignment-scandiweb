@@ -14,15 +14,8 @@
     // $type = isset($_POST['type']) ? $_POST['type'] : null;
 
     $item_ = new Item($db);
-    
-    // if($type == 'DVD'){
-    //     $item_ = new DVD($db);
-    // } else if($type == 'Book'){
-    //     $item_ = new Book($db);
-    // }   else if($type == 'Furniture'){
-    //     $item_ = new Book($db);
-    // }
 
+    // Set item fields from received data
     $item_->setSKU($data['SKU']);
     $item_->setName($data['Name']);
     $item_->setPrice($data['Price']);

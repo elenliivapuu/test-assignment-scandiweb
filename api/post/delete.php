@@ -11,7 +11,7 @@
     $database_ = new Database();
     $db = $database_->connect();
 
-    //Instantiate object
+    // Received list of ids for deletion
     $data['ids'] = isset($_POST['ids']) ? $_POST['ids'] : null;
 
     foreach($data['ids'] as $id_) {

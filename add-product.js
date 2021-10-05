@@ -1,6 +1,8 @@
 // Product type switcher
 $(document).ready(function() {
     $('.item_extra').hide();
+    $('.message-box').hide();
+
     $("#productType").on('change', function() {
         var inputValue = $(this).val();
         $('.item_extra').hide();
@@ -45,7 +47,8 @@ $('#save-product-btn').click(function() {
 
     // Check for input correctness for all fields
     if (!(isValidString(type) && isValidString(special_val) && isValidString(sku_val) && isValidString(name_val) && isValidNum(price_val))) {
-        alert('Please fill in all fields (including type) correctly');
+        $('.message-box').show();
+        $('.message-box').text('Please, submit required data of indicated type');
         return false;
     }
 

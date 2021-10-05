@@ -99,3 +99,12 @@ footer {
 .grid-item .item-price {
     margin-top: 10px;
 }
+
+.message-box {
+    padding: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    margin: 14px 0;
+    background: rgba(255, 0, 0, 0.18);
+    display: none;
+    font-size: 90%;
+}

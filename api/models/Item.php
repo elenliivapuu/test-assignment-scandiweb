@@ -60,11 +60,13 @@
                 Special_attribute = :Special_attribute';
         
             $stmt = $this->conn->prepare($query);
-            $this->SKU =htmlspecialchars(strip_tags($this->SKU));
-            $this->Name =htmlspecialchars(strip_tags($this->Name));
-            $this->Price =htmlspecialchars(strip_tags($this->Price));
-            $this->Special_attribute =htmlspecialchars(strip_tags($this->Special_attribute));
+            // Sanitize inputs
+            $this->SKU = htmlspecialchars(strip_tags($this->SKU));
+            $this->Name = htmlspecialchars(strip_tags($this->Name));
+            $this->Price = htmlspecialchars(strip_tags($this->Price));
+            $this->Special_attribute = htmlspecialchars(strip_tags($this->Special_attribute));
         
+            // Bind with sanitized inputs
             $stmt->bindParam(':SKU', $this->SKU);
             $stmt->bindParam(':Name', $this->Name);
             $stmt->bindParam(':Price', $this->Price);

@@ -11,19 +11,17 @@
     $database_ = new Database();
     $db = $database_->connect();
 
-    //Instantiate object
     $item_ = new Item($db);
 
-    //Blog post query
+    // Check for entries
     $result = $item_->read();
 
-    //Get row count
+    // Get row count
     $num = $result->rowCount();
     $results = '';
 
-    //Check if any posts
+    // Loop through the results
     if($num > 0) {
-        //Post array
         $items_arr = array();
         $items_arr['data'] = array();
 
@@ -40,7 +38,7 @@
             //Push to 'data'
             array_push($items_arr['data'], $item_arr);
         }
-        //Turn to json & output
+        //Turn to json & return
         $results = json_encode($items_arr);
         echo $results;
     } else {
