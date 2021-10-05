@@ -8,8 +8,12 @@ $(document).ready(function() {
     });
 });
 
-function checkInput(val) {
-    return false;
+function isValidString(val) {
+    return val && val.length <= 255;
+}
+
+function isValidNum(val) {
+    return val && !isNaN(val) && parseFloat(val) < 1000000;
 }
 
 // Save new product
@@ -20,19 +24,28 @@ $('#save-product-btn').click(function() {
     let price_val = $('#price').val();
     let special_val = null;
 
+    // Check for input correctness for special attribute fields
     if (type == 'DVD') {
-        special_val = $('#Size').val();
-        special_val = 'Size: ' + special_val + ' MB';
+        special_val = $('#size').val();
+        special_val = isValidNum(special_val) ? 'Size: ' + special_val + ' MB' : null;
     } else if (type == 'Book') {
-        special_val = $('#Weight').val();
-        special_val = 'Weight: ' + special_val + ' KG'
+        special_val = $('#weight').val();
+        special_val = isValidNum(special_val) ? 'Weight: ' + special_val + ' KG' : null;
     } else if (type == 'Furniture') {
-        special_val = $('#Height').val() + 'x' + $('#Width').val() + 'x' + $('#Length').val(); 
-        special_val = 'Dimensions: ' + special_val + ' CM'
+        const h = $('#height').val();
+        const w = $('#width').val();
+        const l = $('#length').val();
+        if (isValidNum(h) && isValidNum(w) && isValidNum(l)) {
+            special_val = h + 'x' + w + 'x' + l;
+            special_val = 'Dimensions: ' + special_val + ' CM'
+        } else {
+            special_val = null;
+        }
     }
 
-    if (type == null || sku_val == null || name_val == null || price_val == null || special_val == null) {
-        alert('Please fill in all fields (including type)');
+    // Check for input correctness for all fields
+    if (!(isValidString(type) && isValidString(special_val) && isValidString(sku_val) && isValidString(name_val) && isValidNum(price_val))) {
+        alert('Please fill in all fields (including type) correctly');
         return false;
     }
 
