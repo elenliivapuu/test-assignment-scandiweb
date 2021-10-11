@@ -89,7 +89,32 @@
             //Execute query
             $stmt->execute();
 
-            return $stmt;
+            $result = $stmt;
+
+            $num = $result->rowCount();
+
+            // Loop through the results
+            if($num > 0) {
+                $items_arr = array();
+                $items_arr['data'] = array();
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    extract($row);
+                    $item_arr = array(
+                        'id' => $id,
+                        'SKU' => $SKU,
+                        'Name' => $Name,
+                        'Price' => $Price,
+                        'Special_attribute' => $Special_attribute
+                    );
+
+                    //Push to 'data'
+                    array_push($items_arr['data'], $item_arr);
+                }
+                //Turn to json & return
+                return json_encode($items_arr);
+            }
+            return null;
         }
 
         public function delete() {
