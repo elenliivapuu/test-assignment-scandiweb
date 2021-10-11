@@ -1,7 +1,7 @@
 <?php
     // Headers and files
     header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: GET, POST, DELETE');
+    header('Access-Control-Allow-Methods: GET, POST');
     include_once('config/Database.php');
     include_once('models/Item.php');
 
@@ -12,20 +12,20 @@
     // Handle requests
     $method = $_SERVER['REQUEST_METHOD'];
     if ($method == "GET") {
-        handleGET();
+        handleGET($db);
 
     } else if ($method == "POST") {
         if (isset($_POST['ids'])) {
             $data['ids'] = $_POST['ids'];
-            handleDEL($data);
+            handleDEL($db, $data);
 
         } else if (isset($_POST['new'])) {
             $data['new'] = $_POST['new'];
-            handleCREATE($data);
+            handleCREATE($db, $data);
         }
     }
 
-    function handleGET() {
+    function handleGET($db) {
         $item_ = new Item($db);
 
         // Check for entries
@@ -61,7 +61,7 @@
         }
     }
 
-    function handleDEL($data) {
+    function handleDEL($db, $data) {
         foreach($data['ids'] as $id_) {
             $item_ = new Item($db);
             $item_->setid($id_);
@@ -74,7 +74,7 @@
         }
     }
 
-    function handleCREATE($data) {
+    function handleCREATE($db, $data) {
         $item_ = new Item($db);
 
         // Set item fields from received data
