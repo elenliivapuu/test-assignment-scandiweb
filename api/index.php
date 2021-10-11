@@ -33,6 +33,7 @@
         $item_ = new Item($db);
         // Get entries
         $results = $item_->read();
+        echo $results;
         return $results;
     }
 
