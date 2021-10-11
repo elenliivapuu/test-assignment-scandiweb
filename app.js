@@ -38,5 +38,7 @@ $('#delete-product-btn').click(function() {
             url: "https://test-assignment-scandiweb.herokuapp.com/api/index.php/products/"+item_id
         })
     }
-    location.reload();
+    $(document).ajaxStop(function() {
+        location.reload();
+    });
 });
