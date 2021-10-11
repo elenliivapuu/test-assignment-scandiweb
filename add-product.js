@@ -15,7 +15,7 @@ function isValidString(val) {
 }
 
 function isValidNum(val) {
-    return val && !isNaN(val) && parseFloat(val) < 1000000;
+    return val && !isNaN(val) && parseFloat(val) < 999999999;
 }
 
 // Save new product
