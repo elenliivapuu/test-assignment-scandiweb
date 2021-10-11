@@ -1,7 +1,7 @@
 <?php
     // Headers and files
     header('Access-Control-Allow-Origin: *');
-    header('Access-Control-Allow-Methods: GET, POST');
+    header('Access-Control-Allow-Methods: GET, POST, DELETE');
     include_once('config/Database.php');
     include_once('models/Item.php');
 
@@ -9,19 +9,23 @@
     $database_ = new Database();
     $db = $database_->connect();
 
-    // Handle requests
+    // Request method/type
     $method = $_SERVER['REQUEST_METHOD'];
-    if ($method == "GET") {
+    // Parameters
+    $prms = explode('/', trim($_SERVER['PATH_INFO'], '\x20\x2f'));
+    $cat = $prms[1];
+
+    if ($cat == "products" && $method === "GET") {
         handleGET($db);
-
-    } else if ($method == "POST") {
-        if (isset($_POST['ids'])) {
-            $data['ids'] = $_POST['ids'];
-            handleDEL($db, $data);
-
-        } else if (isset($_POST['new'])) {
+    } else if ($cat == "products" && $method === "POST") {
+        if (isset($_POST['new'])) {
             $data = $_POST['new'];
             handleCREATE($db, $data);
+        }
+    } else if ($cat == "products" && $method === "DELETE") {
+        if ($prms[2] != null) {
+            $prod_id = $prms[2];
+            handleDEL($db, $prod_id);
         }
     }
 
@@ -61,16 +65,14 @@
         }
     }
 
-    function handleDEL($db, $data) {
-        foreach($data['ids'] as $id_) {
-            $item_ = new Item($db);
-            $item_->setid($id_);
-    
-            if($item_->delete()) {
-                $results = json_encode(array('message' => 'Item Deleted'));
-            } else {
-                $results = json_encode(array('message' => 'Post Not Deleted'));
-            }
+    function handleDEL($db, $prod_id) {
+        $item_ = new Item($db);
+        $item_->setid($prod_id);
+
+        if($item_->delete()) {
+            $results = json_encode(array('message' => 'Item Deleted'));
+        } else {
+            $results = json_encode(array('message' => 'Post Not Deleted'));
         }
     }
 

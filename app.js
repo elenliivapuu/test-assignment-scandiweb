@@ -2,8 +2,9 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://test-assignment-scandiweb.herokuapp.com/api/products.php",
+        url: "https://test-assignment-scandiweb.herokuapp.com/api/index.php/products/",
     }).done(function( res ) {
+        console.log(res);
         if (!res) { return false; }
 
         const results_obj = JSON.parse(res)['data'];
@@ -32,11 +33,11 @@ $('#delete-product-btn').click(function() {
             item_ids.push(box.value);
         }
     }
-    $.ajax({
-        type: "POST",
-        url: "https://test-assignment-scandiweb.herokuapp.com/api/products.php",
-        data: { ids: item_ids }
-    }).done(function( msg ) {
-        location.reload();
-    });
+    for (item_id of items_id) {
+        $.ajax({
+            type: "DELETE",
+            url: "https://test-assignment-scandiweb.herokuapp.com/api/index.php/products/"+item_id
+        })
+    }
+    location.reload();
 });

@@ -61,8 +61,8 @@ $('#save-product-btn').click(function() {
 
     $.ajax({
         type: "POST",
-        url: "https://test-assignment-scandiweb.herokuapp.com/api/products.php",
-        data: { 'new': new_item, 'type': type }
+        url: "https://test-assignment-scandiweb.herokuapp.com/api/index.php/products/",
+        data: { 'new': new_item }
     }).done(function( msg ) {
         window.location.href = '/';
     });
