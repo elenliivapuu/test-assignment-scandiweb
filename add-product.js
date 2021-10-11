@@ -61,7 +61,7 @@ $('#save-product-btn').click(function() {
 
     $.ajax({
         type: "POST",
-        url: "https://test-assignment-scandiweb.herokuapp.com/api/post/create.php",
+        url: "https://test-assignment-scandiweb.herokuapp.com/api/products.php",
         data: { 'new': new_item, 'type': type }
     }).done(function( msg ) {
         window.location.href = '/';

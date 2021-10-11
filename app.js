@@ -2,8 +2,11 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "https://test-assignment-scandiweb.herokuapp.com/api/post/read.php",
+        url: "https://test-assignment-scandiweb.herokuapp.com/api/products.php",
     }).done(function( res ) {
+        console.log(res)
+        if (!res) { return false; }
+
         const results_obj = JSON.parse(res)['data'];
         // create blocks for items
         for (res of results_obj) {
@@ -32,7 +35,7 @@ $('#delete-product-btn').click(function() {
     }
     $.ajax({
         type: "POST",
-        url: "https://test-assignment-scandiweb.herokuapp.com/api/post/delete.php",
+        url: "https://test-assignment-scandiweb.herokuapp.com/api/products.php",
         data: { ids: item_ids }
     }).done(function( msg ) {
         location.reload();

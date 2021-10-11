@@ -6,7 +6,6 @@
     include_once('../config/Database.php');
     include_once('../models/Item.php');
 
-    
     //Instantiate DB & connect
     $database_ = new Database();
     $db = $database_->connect();

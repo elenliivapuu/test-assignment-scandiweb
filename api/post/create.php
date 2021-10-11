@@ -1,8 +1,7 @@
 <?php
-    //Headers
+    // Headers and files
     header('Access-Control-Allow-Origin: *');
     header('Access-Control-Allow-Methods: GET, POST');
-
     include_once('../config/Database.php');
     include_once('../models/Item.php');
 
@@ -11,7 +10,6 @@
     $db = $database_->connect();
 
     $data = isset($_POST['new']) ? $_POST['new'] : null;
-    // $type = isset($_POST['type']) ? $_POST['type'] : null;
 
     $item_ = new Item($db);
 
