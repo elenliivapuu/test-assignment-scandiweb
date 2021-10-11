@@ -4,7 +4,6 @@ $(document).ready(function() {
         type: "GET",
         url: "https://test-assignment-scandiweb.herokuapp.com/api/index.php/products/",
     }).done(function( res ) {
-        console.log(res);
         if (!res) { return false; }
 
         const results_obj = JSON.parse(res)['data'];
@@ -33,7 +32,7 @@ $('#delete-product-btn').click(function() {
             item_ids.push(box.value);
         }
     }
-    for (item_id of items_id) {
+    for (item_id of item_ids) {
         $.ajax({
             type: "DELETE",
             url: "https://test-assignment-scandiweb.herokuapp.com/api/index.php/products/"+item_id
