@@ -4,7 +4,6 @@ $(document).ready(function() {
         type: "GET",
         url: "https://test-assignment-scandiweb.herokuapp.com/api/products.php",
     }).done(function( res ) {
-        console.log(res)
         if (!res) { return false; }
 
         const results_obj = JSON.parse(res)['data'];

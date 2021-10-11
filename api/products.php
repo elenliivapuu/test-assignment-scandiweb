@@ -20,7 +20,7 @@
             handleDEL($db, $data);
 
         } else if (isset($_POST['new'])) {
-            $data['new'] = $_POST['new'];
+            $data = $_POST['new'];
             handleCREATE($db, $data);
         }
     }
